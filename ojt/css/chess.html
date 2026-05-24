@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Chess Game</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #222;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(8, 80px);
+            grid-template-rows: repeat(8, 80px);
+            border: 5px solid #111;
+        }
+
+        .square {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 42px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .white {
+            background: #f0d9b5;
+        }
+
+        .black {
+            background: #b58863;
+        }
+
+        .selected {
+            outline: 4px solid yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="board" id="board"></div>
+
+    <script>
+        const board = document.getElementById("board");
+
+        const pieces = [
+            ["♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"],
+            ["♟", "♟", "♟", "♟", "♟", "♟", "♟", "♟"],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", "", ""],
+            ["♙", "♙", "♙", "♙", "♙", "♙", "♙", "♙"],
+            ["♖", "♘", "♗", "♕", "♔", "♗", "♘", "♖"]
+        ];
+
+        let selectedSquare = null;
+
+        function createBoard() {
+            board.innerHTML = "";
+
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+
+                    const square = document.createElement("div");
+
+                    square.classList.add(
+                        "square",
+                        (row + col) % 2 === 0 ? "white" : "black"
+                    );
+
+                    square.dataset.row = row;
+                    square.dataset.col = col;
+
+                    square.textContent = pieces[row][col];
+
+                    square.addEventListener("click", () => handleMove(square));
+
+                    board.appendChild(square);
+                }
+            }
+        }
+
+        function handleMove(square) {
+            if (!selectedSquare && square.textContent !== "") {
+                selectedSquare = square;
+                square.classList.add("selected");
+                return;
+            }
+
+            if (selectedSquare) {
+                square.textContent = selectedSquare.textContent;
+                selectedSquare.textContent = "";
+
+                selectedSquare.classList.remove("selected");
+                selectedSquare = null;
+            }
+        }
+
+        createBoard();
+    </script>
+
+</body>
+
+</html>

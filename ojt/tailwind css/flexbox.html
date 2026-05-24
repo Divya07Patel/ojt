@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="flex flex-row bg-blue-500 justify-center text-xl font-bold">
+        <div class="text-white p-6">My FlexBox</div>
+    </div>
+    <div class="grid grid-cols-6 gap-4">
+        <div class="col-start-1 col-end-2 bg-black text-white p-6 h-150">
+            <a href="Home">Home</a>
+            <br><br>
+            <a href="About">About</a>
+            <br><br>
+            <a href="Contact">Contact</a>
+        </div>
+        <div class="col-span-2 col-end-6 bg-gray-200 p-6 h-150 col-start-3 animate-pulse text-center text-2xl font-bold ">
+            Main Content
+        </div>
+    </div>
+
+<!-- Table Container -->
+<div class="overflow-x-auto shadow-md sm:rounded-lg border border-gray-300">
+  <table class="w-full text-sm text-left text-gray-500 border-collapse">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-100 border-b border-gray-300 hover:zoom-in hover:bg-blue-100">
+      <tr>
+        <th class="px-6 py-3 border-r border-gray-300">Employee Name</th>
+        <th class="px-6 py-3 border-r border-gray-300">Department</th>
+        <th class="px-6 py-3">Work Status</th>
+      </tr>
+    </thead>
+
+    <tbody id="tableBody">
+      <tr class="bg-white border-b border-gray-300 hover:bg-gray-50">
+        <td class="px-6 py-4 font-medium text-gray-900 border-r border-gray-300 hover:zoom-in hover:bg-blue-100">
+          Jaymin
+        </td>
+        <td class="px-6 py-4 border-r border-gray-300 hover:zoom-in hover:bg-blue-100">
+          Frontend Developer
+        </td>
+        <td class="px-6 py-4 text-green-600 hover:zoom-in hover:bg-blue-100">
+          Available
+        </td>
+      </tr>
+
+      <tr class="bg-white border-b border-gray-300 hover:bg-gray-50">
+        <td class="px-6 py-4 font-medium text-gray-900 border-r border-gray-300 hover:zoom-in hover:bg-blue-100">
+        Umang
+        </td>
+        <td class="px-6 py-4 border-r border-gray-300 hover:zoom-in hover:bg-blue-100">
+          UI/UX Designer
+        </td>
+        <td class="px-6 py-4 text-yellow-600 hover:zoom-in hover:bg-blue-100">
+          On Leave
+        </td>
+      </tr>
+
+      <tr class="bg-white hover:bg-gray-50">
+        <td class="px-6 py-4 font-medium text-gray-900 border-r border-gray-300 hover:zoom-in hover:bg-blue-100">
+          Divya
+        </td>
+        <td class="px-6 py-4 border-r border-gray-300 hover:zoom-in hover:bg-blue-100">
+          Backend Engineer
+        </td>
+        <td class="px-6 py-4 text-red-600 hover:zoom-in hover:bg-blue-100">
+          Busy
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    <div class="flex flex-row bg-blue-500 justify-center text-xl font-bold">
+        <div class="text-white p-6">Footer</div>
+    </div>
+</body>
+</html>

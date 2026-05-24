@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime T-Shirts Store</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#111;
+color:white;
+}
+
+header{
+height:100vh;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+url('https://animestore.pk/cdn/shop/products/17_8a41a5a0-9e39-4742-b3a9-272938c20e23.jpg?v=1736343719&width=1946');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:70px;
+color:#ff2e63;
+margin-bottom:20px;
+text-shadow:0 0 10px #ff2e63;
+}
+
+.hero p{
+font-size:24px;
+margin-bottom:30px;
+}
+
+.hero button{
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:10px;
+background:#ff2e63;
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero button:hover{
+background:#ff004c;
+transform:scale(1.05);
+}
+
+.products{
+padding:60px 40px;
+}
+
+.products h2{
+text-align:center;
+font-size:45px;
+margin-bottom:40px;
+color:#08d9d6;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1f1f1f;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 0 15px rgba(255,255,255,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+text-align:center;
+}
+
+.card-content h3{
+font-size:28px;
+margin-bottom:10px;
+color:#ff2e63;
+}
+
+.card-content p{
+font-size:18px;
+margin-bottom:15px;
+}
+
+.buy-btn{
+padding:12px 25px;
+border:none;
+background:#08d9d6;
+color:black;
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.buy-btn:hover{
+background:#00fff7;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#000;
+margin-top:40px;
+font-size:18px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="hero">
+<h1>ANIME T-SHIRTS</h1>
+<p>Unleash Your Otaku Style 🔥</p>
+<button>Shop Now</button>
+</div>
+</header>
+
+<section class="products">
+
+<h2>Trending Collection</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQe1feFtT1l0GCMo36KypcKQmJ-axuc5A0ou7vGOfbmkODJqPekHafUnvK1Edn717sXoHm2twbuxiKVEUEuCsfb9UVAzubwTlXhtbz3qxLC" alt="Anime Shirt">
+<div class="card-content">
+<h3>Naruto Tee</h3>
+<p>Premium Anime Print T-Shirt</p>
+<button class="buy-btn">Buy Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://m.media-amazon.com/images/I/51ThNRzzdhL.jpg" alt="Anime Shirt">
+<div class="card-content">
+<h3>One Piece Tee</h3>
+<p>Stylish Pirate King Design</p>
+<button class="buy-btn">Buy Now</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSjjKdgNEZT7VmsBXhTo1_zvXkLJiNKWmxXoF7V7Qy7ZLuWR5bMLxMeMZe9qUs8UbNK4RssnLdijwzfOhWBxd54rCpX819wSA" alt="Anime Shirt">
+<div class="card-content">
+<h3>Dragon Ball Tee</h3>
+<p>Ultra Instinct Inspired Style</p>
+<button class="buy-btn">Buy Now</button>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 AnimeWear Store | Designed for Anime Fans
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Catch Game</title>
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 10px;
+        }
+
+        #gameArea {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            margin: 20px auto;
+            background: #222;
+            overflow: hidden;
+            border: 2px solid white;
+        }
+
+        #player {
+            position: absolute;
+            bottom: 10px;
+            width: 80px;
+            height: 15px;
+            background: lime;
+            left: 160px;
+            border-radius: 5px;
+        }
+
+        .block {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            top: 0;
+            border-radius: 3px;
+        }
+
+        #score {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        #gameOver {
+            display: none;
+            font-size: 30px;
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Catch the Falling Blocks</h1>
+    <div id="score">Score: 0</div>
+    <div id="gameOver">Game Over!</div>
+
+    <div id="gameArea">
+        <div id="player"></div>
+    </div>
+
+    <script>
+        let gameArea = document.getElementById("gameArea");
+        let player = document.getElementById("player");
+        let scoreText = document.getElementById("score");
+        let gameOverText = document.getElementById("gameOver");
+
+        let score = 0;
+        let gameRunning = true;
+
+        gameArea.addEventListener("mousemove", (e) => {
+            let rect = gameArea.getBoundingClientRect();
+            let x = e.clientX - rect.left - player.offsetWidth / 2;
+
+            if (x < 0) x = 0;
+            if (x > 320) x = 320;
+
+            player.style.left = x + "px";
+        });
+
+        function createBlock() {
+            if (!gameRunning) return;
+
+            let block = document.createElement("div");
+            block.classList.add("block");
+
+            let x = Math.random() * 380;
+            block.style.left = x + "px";
+
+            gameArea.appendChild(block);
+
+            let fall = setInterval(() => {
+                if (!gameRunning) {
+                    clearInterval(fall);
+                    block.remove();
+                    return;
+                }
+
+                let top = parseInt(block.style.top || 0);
+                block.style.top = top + 5 + "px";
+
+                let blockRect = block.getBoundingClientRect();
+                let playerRect = player.getBoundingClientRect();
+
+                if (
+                    blockRect.bottom >= playerRect.top &&
+                    blockRect.left < playerRect.right &&
+                    blockRect.right > playerRect.left
+                ) {
+                    score++;
+                    scoreText.innerText = "Score: " + score;
+                    block.remove();
+                    clearInterval(fall);
+                }
+
+                if (top > 580) {
+                    gameOver();
+                }
+            }, 30);
+        }
+
+        function gameOver() {
+            gameRunning = false;
+            gameOverText.style.display = "block";
+        }
+
+        setInterval(createBlock, 1000);
+    </script>
+
+</body>
+
+</html>
