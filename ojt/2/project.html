@@ -13,7 +13,7 @@
             min-height: 100vh;
             background:
                 linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('https://wallpapers.com/images/featured/lamborghini-lbun8b8ehlv3j8to.jpg');
+                url('https://images.pexels.com/photos/30706125/pexels-photo-30706125.jpeg?_gl=1*lfbrey*_ga*MTIwNDI5NDUwMi4xNzc0MzIzODIw*_ga_8JE65Q40S6*czE3Nzk2ODgyODQkbzMkZzAkdDE3Nzk2ODgyODQkajYwJGwwJGgw');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -110,20 +110,9 @@
             animation: cardAppear 0.8s ease forwards;
         }
 
-        .card:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .card:nth-child(2) {
-            animation-delay: 0.4s;
-        }
-
-        .card:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-
-        .card:nth-child(4) {
-            animation-delay: 0.8s;
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes cardAppear {
@@ -131,11 +120,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes bgZoom {
@@ -148,75 +132,154 @@
             }
         }
 
-        @media (max-width: 992px) {
+        /* Section spacing and background */
+        #insurance-section,
+        #shipping-section {
+            padding: 60px 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
 
-            .hero-section {
-                min-height: auto;
-                padding: 80px 20px;
-                text-align: center;
-            }
+        /* Headings */
+        #insurance-section h2,
+        #shipping-section h2 {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1f2d3d;
+        }
 
-            .hero-content {
-                max-width: 100%;
-                padding-top: 40px;
-                text-align: center;
-                margin: auto;
-            }
+        #insurance-section p,
+        #shipping-section p {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
 
-            .hero-section h1 {
-                font-size: 3rem;
-            }
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
 
-            .hero-section p {
-                font-size: 1rem;
-                line-height: 1.6;
-            }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
 
-            .login-form {
-                display: flex;
-                gap: 10px;
-                margin-top: 15px;
-                flex-wrap: wrap;
+        .card-title {
+            font-weight: 600;
+            color: #0d6efd;
+        }
+
+        .btn {
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            padding: 8px 18px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        #shipping-section .btn {
+            border-color: #6c757d;
+            color: #6c757d;
+        }
+
+        #shipping-section .btn:hover {
+            background: #6c757d;
+            color: #fff;
+        }
+
+        #insurance-section .btn:hover {
+            background: #0d6efd;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+
+            #insurance-section,
+            #shipping-section {
+                padding: 40px 15px;
             }
         }
 
-        @media (max-width: 576px) {
+        .select-card {
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
 
-            .navbar-brand {
-                font-size: 1.3rem;
+        .select-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        input[type="radio"]:checked+label {
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        #feedback-section .card {
+            border-radius: 15px;
+            border: none;
+        }
+
+        #feedback-section h2 {
+            font-weight: 700;
+            color: #1f2d3d;
+        }
+
+        #feedback-section textarea {
+            resize: none;
+        }
+
+        .featured-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 20px;
+        }
+
+        .featured-section h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #1f2d3d;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .featured-section h2::after {
+            content: "";
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #0d6efd, #00c6ff);
+            position: absolute;
+            left: 20%;
+            bottom: -8px;
+            border-radius: 10px;
+        }
+
+        .featured-section h5 {
+            font-size: 1.1rem;
+            color: #6c757d;
+            font-weight: 400;
+            margin-top: 15px;
+        }
+
+        .featured-section h2,
+        .featured-section h5 {
+            animation: fadeUp 0.8s ease-in-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
 
-            .hero-section {
-                padding: 60px 15px;
-            }
-
-            .hero-content {
-                padding-top: 20px;
-            }
-
-            .hero-section h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-section p {
-                font-size: 0.95rem;
-                line-height: 1.5;
-            }
-
-            .btn-lg {
-                width: 100%;
-            }
-
-            .login-form {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
-                margin-top: 15px;
-            }
-
-            .login-form .btn {
-                width: 100%;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -228,154 +291,703 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
         <div class="container-fluid">
-
-            <a class="navbar-brand fw-bold" href="#">
-                AutoLink
-            </a>
+            <a class="navbar-brand fw-bold" href="#">ō͡≡o˞̶  AutoLink</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent">
-
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Browse Cars</a>
+                        <a class="nav-link active" href="#cars-section">Browse Cars</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Insurance</a>
+                        <a class="nav-link" href="#insurance-section">Insurance</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Shipping</a>
-                    </li>
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Dashboard
-                        </a>
-
-                        <ul class="dropdown-menu">
-
-                            <li><a class="dropdown-item" href="#">Sports Cars</a></li>
-                            <li><a class="dropdown-item" href="#">Luxury Cars</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
-
-                        </ul>
+                        <a class="nav-link" href="#shipping-section">Shipping</a>
                     </li>
                 </ul>
 
+                <!-- ORIGINAL LOGIN BUTTONS -->
                 <form class="login-form d-flex gap-2">
 
-                    <button class="btn btn-outline-success" type="submit">
+                    <button class="btn btn-outline-success" type="button" data-bs-toggle="modal"
+                        data-bs-target="#loginModal" onclick="setRole('Buyer')">
                         Buyer Login
                     </button>
 
-                    <button class="btn btn-outline-primary" type="submit">
+                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
+                        data-bs-target="#loginModal" onclick="setRole('Seller')">
                         Seller Login
                     </button>
 
                 </form>
+
             </div>
         </div>
     </nav>
 
     <div class="hero-section d-flex align-items-center text-white">
-
         <div class="container">
-
             <div class="hero-content">
-
                 <h1 class="display-4 fw-bold">Welcome to AutoLink 🚗</h1>
-
                 <p class="lead mt-3">
-                    AutoLink is your trusted destination for premium car imports and luxury vehicles.
-                    Explore a wide range of high-performance sports cars, elegant sedans, and modern SUVs
-                    from top international brands. We provide smooth import services, insurance assistance,
-                    and worldwide shipping to make your dream car ownership simple and hassle-free.
+                    AutoLink is your trusted destination for premium car imports...
                 </p>
-
                 <a href="#" class="btn btn-primary btn-lg mt-3">Browse Cars</a>
-
             </div>
         </div>
     </div>
 
     <br><br>
-    <h2>📈Featured Listings</h2>
-    <br>
-    <h5>Handpicked premium vehicles from verified sellers.</h5>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card h-70">
-                <img src="https://images.pexels.com/photos/19094355/pexels-photo-19094355.jpeg" class="card-img-top"
-                    alt="Image">
+    <div class="container">
 
-                <div class="card-body">
-                    <h5 class="card-title">BMW M4 Competition</h5>
-                    <p class="card-text">
-                        Used 2021 BMW M4 Competition with 15,000 miles. Features a powerful 3.0L twin-turbo engine.
-                    </p>
-                    <button class="btn btn-dark">View Details</button>
-                </div>
+        <div class="featured-section">
+            <h2>📈 Featured Listings</h2>
+            <h5>Handpicked premium vehicles from verified sellers.</h5>
+            <div class="d-flex justify-content-center gap-4 mt-4">
+                <button class="btn btn-outline-primary">Luxury Cars</button>
+                <button class="btn btn-outline-success">Sports Cars</button>
+                <button class="btn btn-outline-warning">SUVs</button>
             </div>
         </div>
 
-        <div class="col-md-3">
-            <div class="card h-70">
-                <img src="https://images.pexels.com/photos/17233277/pexels-photo-17233277.jpeg" class="card-img-top"
-                    alt="Image">
+        <br>
 
-                <div class="card-body">
-                    <h5 class="card-title">Mercedes-Benz E-Class</h5>
-                    <p class="card-text">
-                        Used 2021 Mercedes-Benz E-Class with 20,000 miles. Features luxury interior and safety.
-                    </p>
-                    <button class="btn btn-dark">View Details</button>
+        <div class="row g-4">
+
+            <!-- CAR 1 -->
+            <div class="col-md-3">
+                <div class="card h-100">
+
+                    <img src="https://images.pexels.com/photos/19094355/pexels-photo-19094355.jpeg"
+                        class="card-img-top">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">BMW M4 Competition</h5>
+
+                        <p class="card-text">
+                            Used 2021 BMW M4 Competition...
+                        </p>
+
+                        <button class="btn btn-dark car-btn" data-bs-toggle="modal" data-bs-target="#carModal"
+                            data-title="BMW M4 Competition"
+                            data-img="https://images.pexels.com/photos/19094355/pexels-photo-19094355.jpeg"
+                            data-desc="Enjoy a combination of performance and luxury in this BMW M4 Competition that is in good condition. Equipped with a 3.0L Twin-Turbo straight-6 engine, it will offer you excellent speed and handling capabilities making each trip unique and exhilarating. This BMW is a sporty M-performance vehicle that boasts leather upholstery, advanced infotainment system, adaptive suspension system, and more. It offers you a supercar experience without spending supercar money on a car.">
+                            View Details
+                        </button>
+
+                        <button class="btn btn-success mt-2 buy-btn" data-title="BMW M4 Competition"
+                            data-price="$72,000" data-bs-toggle="modal" data-bs-target="#buyModal">
+                            Buy Now
+                        </button>
+
+                    </div>
                 </div>
             </div>
+
+            <!-- CAR 2 -->
+            <div class="col-md-3">
+                <div class="card h-100">
+
+                    <img src="https://images.pexels.com/photos/17233277/pexels-photo-17233277.jpeg"
+                        class="card-img-top">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">Mercedes-Benz E-Class</h5>
+
+                        <p class="card-text">
+                            Luxury sedan with comfort...
+                        </p>
+
+                        <button class="btn btn-dark car-btn" data-bs-toggle="modal" data-bs-target="#carModal"
+                            data-title="Mercedes-Benz E-Class"
+                            data-img="https://images.pexels.com/photos/17233277/pexels-photo-17233277.jpeg"
+                            data-desc="An elegant sedan that blends comfort, luxury, and cutting-edge technologies. Well-kept E-Class provides an enjoyable ride, luxurious leather seats, ample space, and superior safety features. Ideal for individuals seeking performance with a touch of luxury.">
+                            View Details
+                        </button>
+
+                        <button class="btn btn-success mt-2 buy-btn" data-title="Mercedes-Benz E-Class"
+                            data-price="$65,000" data-bs-toggle="modal" data-bs-target="#buyModal">
+                            Buy Now
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAR 3 -->
+            <div class="col-md-3">
+                <div class="card h-100">
+
+                    <img src="https://images.unsplash.com/photo-1621135802920-133df287f89c" class="card-img-top">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">Lamborghini Aventador</h5>
+
+                        <p class="card-text">
+                            V12 supercar performance...
+                        </p>
+
+                        <button class="btn btn-dark car-btn" data-bs-toggle="modal" data-bs-target="#carModal"
+                            data-title="Lamborghini Aventador"
+                            data-img="https://images.unsplash.com/photo-1621135802920-133df287f89c"
+                            data-desc="This is an incredible high-performance super car featuring the famous V12 engine that gives extreme speed and mind-blowing acceleration. The Aventador has unique styling with scissor doors, lightweight carbon fiber construction, as well as an extravagant driver's cabin. It is a rare combination of performance, luxury, and exotic beauty.">
+                            View Details
+                        </button>
+
+                        <button class="btn btn-success mt-2 buy-btn" data-title="Lamborghini Aventador"
+                            data-price="$450,000" data-bs-toggle="modal" data-bs-target="#buyModal">
+                            Buy Now
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- CAR 4 -->
+            <div class="col-md-3">
+                <div class="card h-100">
+
+                    <img src="https://images.unsplash.com/photo-1741905358565-5ae6835ac172" class="card-img-top">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">Land Rover Defender</h5>
+
+                        <p class="card-text">
+                            Off-road capability SUV...
+                        </p>
+
+                        <button class="btn btn-dark car-btn" data-bs-toggle="modal" data-bs-target="#carModal"
+                            data-title="Land Rover Defender"
+                            data-img="https://images.unsplash.com/photo-1741905358565-5ae6835ac172"
+                            data-desc="An off-roading SUV that provides comfort when driving through both town and wilderness. This is an exceptionally well-cared-for Land Rover Defender, which delivers great power, superb 4x4 performance, interior space, and many other technological amenities. Ideal for people looking to combine all these qualities into one vehicle.">
+                            View Details
+                        </button>
+
+                        <button class="btn btn-success mt-2 buy-btn" data-title="Land Rover Defender"
+                            data-price="$80,000" data-bs-toggle="modal" data-bs-target="#buyModal">
+                            Buy Now
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="col-md-3">
-            <div class="card h-70">
-                <img src="https://images.unsplash.com/photo-1621135802920-133df287f89c" class="card-img-top"
-                    alt="Image">
+        <div class="text-center mt-5 mb-5">
 
-                <div class="card-body">
-                    <h5 class="card-title">Lamborghini Avantador</h5>
-                    <p class="card-text">
-                        Used 2021 Lamborghini Avantador with 10,000 miles. Features a powerful V12 engine.
-                    </p>
-                    <button class="btn btn-dark">View Details</button>
-                </div>
-            </div>
+            <button class="btn btn-warning btn-lg" data-bs-toggle="modal" data-bs-target="#sellModal">
+                Sell Your Car 🚘
+            </button>
+
         </div>
 
-        <div class="col-md-3">
-            <div class="card h-70">
-                <img src="https://images.pexels.com/photos/19721317/pexels-photo-19721317.jpeg" class="card-img-top"
-                    alt="Image">
+    </div>
 
-                <div class="card-body">
-                    <h5 class="card-title">Land Rover Defender</h5>
-                    <p class="card-text">
-                        Used 2021 Land Rover Defender with off-road capability and rugged design.
-                    </p>
-                    <button class="btn btn-dark">View Details</button>
+    <div class="modal fade" id="carModal" tabindex="-1">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carTitle"></h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body text-center">
+
+                    <img id="carImage" class="img-fluid rounded mb-3" style="max-height:300px;">
+
+                    <p id="carDescription"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="loginModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="loginTitle">Login</h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="loginForm">
+
+                        <div class="mb-3">
+                            <label>Email</label>
+
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Password</label>
+
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark w-100">
+                            Login
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="buyModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">Buy Car</h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h4 id="buyCarName"></h4>
+
+                    <p id="buyCarPrice"></p>
+
+                    <form id="buyForm">
+
+                        <div class="mb-3">
+                            <label>Your Name</label>
+
+                            <input type="text" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Phone Number</label>
+
+                            <input type="tel" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Address</label>
+
+                            <textarea class="form-control" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">
+                            Confirm Purchase
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="sellModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">Sell Your Car</h5>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="sellForm">
+
+                        <div class="mb-3">
+                            <label>Car Name</label>
+
+                            <input type="text" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Model Year</label>
+
+                            <input type="number" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Expected Price</label>
+
+                            <input type="text" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Upload Car Image</label>
+
+                            <input type="file" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100">
+                            Submit Car
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container mt-5" id="insurance-section">
+        <h2>Car Insurance</h2>
+        <p>Select the insurance plan that suits you best.</p>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card h-100 select-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Basic Coverage</h5>
+                        <p class="card-text">Liability coverage for bodily injury and property damage.</p>
+
+                        <input type="radio" name="insurance" value="Basic Coverage" class="form-check-input">
+                        <label>Select</label>
+                    </div>
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 select-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Comprehensive Coverage</h5>
+                        <p class="card-text">Covers theft, fire, natural disasters, etc.</p>
+
+                        <input type="radio" name="insurance" value="Comprehensive Coverage" class="form-check-input">
+                        <label>Select</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 select-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Collision Coverage</h5>
+                        <p class="card-text">Covers damage from accidents with vehicles or objects.</p>
+
+                        <input type="radio" name="insurance" value="Collision Coverage" class="form-check-input">
+                        <label>Select</label>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- SHIPPING -->
+    <div class="container mt-5" id="shipping-section">
+        <h2>Shipping Services</h2>
+        <p>Select your preferred shipping method.</p>
+
+        <div class="row g-4">
+
+            <div class="col-md-6">
+                <div class="card h-100 select-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Standard Shipping</h5>
+                        <p class="card-text">2–4 weeks delivery, economical option.</p>
+
+                        <input type="radio" name="shipping" value="Standard Shipping" class="form-check-input">
+                        <label>Select</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100 select-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Express Shipping</h5>
+                        <p class="card-text">1–2 weeks delivery, faster option.</p>
+
+                        <input type="radio" name="shipping" value="Express Shipping" class="form-check-input">
+                        <label>Select</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CONFIRM BUTTON -->
+    <div class="container text-center mt-5 mb-5">
+        <button class="btn btn-primary btn-lg" id="confirmBtn">
+            Confirm Selection
+        </button>
+
+        <div id="result" class="mt-4 fw-bold"></div>
+    </div>
+    <div class="container mt-5 mb-5" id="feedback-section">
+        <h2>Feedback / Complaints</h2>
+        <p>We value your suggestions to improve our services.</p>
+
+        <div class="card p-4 shadow-sm">
+
+            <div class="mb-3">
+                <label class="form-label">Your Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your name">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Feedback / Complaint</label>
+                <textarea id="message" class="form-control" rows="4"
+                    placeholder="Write your feedback or complaint here..."></textarea>
+            </div>
+
+            <button class="btn btn-success" id="submitFeedback">
+                Submit Feedback
+            </button>
+
+            <div id="feedbackResult" class="mt-3 fw-bold"></div>
+
+        </div>
+    </div>
+
+    <div class="container mt-5 mb-5 text-center">
+        <p class="text-muted">© 2024 AutoLink. All rights reserved.</p>
+        contact us: <a href="mailto:info@autolink.com">info@autolink.com</a>
+        <br>
+        also follow us on social media:
+        <a href="#" class="ms-2 me-2"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" width="24"></a>
+        <a href="#" class="ms-2 me-2"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" width="24"></a>
+        <a href="#" class="ms-2 me-2"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" width="24"></a>
+    </div>
+
+
+
+
+    <script>
+
+        document.querySelectorAll(".car-btn").forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                document.getElementById("carTitle").innerText = btn.dataset.title;
+
+                document.getElementById("carImage").src = btn.dataset.img;
+
+                document.getElementById("carDescription").innerText = btn.dataset.desc;
+
+            });
+
+        });
+        let currentRole = "";
+
+        function setRole(role) {
+
+            currentRole = role;
+
+            document.getElementById("loginTitle").innerText = role + " Login";
+
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            let email = document.getElementById("email").value;
+
+            let password = document.getElementById("password").value;
+
+            if (currentRole === "Buyer") {
+
+                if (email === "buyer@gmail.com" && password === "1234") {
+
+                    alert("Buyer Login Successful ✅");
+
+                    localStorage.setItem("role", "Buyer");
+
+                }
+
+                else {
+
+                    alert("Invalid Buyer Credentials ❌");
+
+                }
+
+            }
+
+            else if (currentRole === "Seller") {
+
+                if (email === "seller@gmail.com" && password === "1234") {
+
+                    alert("Seller Login Successful ✅");
+
+                    localStorage.setItem("role", "Seller");
+
+                }
+
+                else {
+
+                    alert("Invalid Seller Credentials ❌");
+
+                }
+
+            }
+
+        });
+
+        document.querySelectorAll(".buy-btn").forEach(btn => {
+
+            btn.addEventListener("click", () => {
+
+                let title = btn.dataset.title;
+
+                let price = btn.dataset.price;
+
+                document.getElementById("buyCarName").innerText = title;
+
+                document.getElementById("buyCarPrice").innerText = "Price: " + price;
+
+            });
+
+        });
+
+        document.getElementById("buyForm").addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            alert("Car Purchase Successful ✅");
+
+            bootstrap.Modal.getInstance(document.getElementById('buyModal')).hide();
+
+        });
+
+        document.getElementById("sellForm").addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            alert("Your Car Has Been Submitted Successfully 🚘");
+
+            bootstrap.Modal.getInstance(document.getElementById('sellModal')).hide();
+
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach((card, index) => {
+
+                card.style.animationDelay = (index * 0.2) + "s";
+
+
+            });
+
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href"))
+                    .scrollIntoView({ behavior: "smooth" });
+            });
+        });
+        document.querySelectorAll(".btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const cardTitle = this.closest(".card").querySelector(".card-title").innerText;
+
+                alert(`You selected: ${cardTitle}`);
+
+                this.classList.add("clicked");
+                setTimeout(() => this.classList.remove("clicked"), 200);
+            });
+        });
+        document.getElementById("confirmBtn").addEventListener("click", function () {
+
+            const insurance = document.querySelector('input[name="insurance"]:checked');
+            const shipping = document.querySelector('input[name="shipping"]:checked');
+
+            if (!insurance || !shipping) {
+                document.getElementById("result").innerHTML =
+                    "⚠️ Please select both Insurance and Shipping options.";
+                document.getElementById("result").style.color = "red";
+                return;
+            }
+
+            document.getElementById("result").innerHTML =
+                `✅ You selected:<br>
+        Insurance: ${insurance.value}<br>
+        Shipping: ${shipping.value}`;
+
+            document.getElementById("result").style.color = "green";
+        });
+        document.getElementById("submitFeedback").addEventListener("click", function () {
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) {
+                document.getElementById("feedbackResult").innerHTML =
+                    "⚠️ Please fill all fields before submitting.";
+                document.getElementById("feedbackResult").style.color = "red";
+                return;
+            }
+
+            document.getElementById("feedbackResult").innerHTML =
+                "✅ Thank you for your feedback! We will review it soon.";
+
+            document.getElementById("feedbackResult").style.color = "green";
+
+            // clear form
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("message").value = "";
+        });
+
+    </script>
 
 </body>
 
