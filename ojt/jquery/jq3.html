@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Delete Row</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: lightblue;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: gray;
+        }
+
+        .empty-row {
+            text-align: center;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table id="myTable">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>John Doe</td>
+                <td>New York</td>
+                <td>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Jane Smith</td>
+                <td>Los Angeles</td>
+                <td>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Emily Johnson</td>
+                <td>Chicago</td>
+                <td>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Michael Brown</td>
+                <td>Houston</td>
+                <td>
+                    <button class="delete-btn">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <script>
+
+        $(".delete-btn").click(function () {
+
+            $(this).closest("tr").remove();
+
+            if ($("#myTable tbody tr").length === 0) {
+
+                $("#myTable tbody").append(
+                    '<tr class="empty-row"><td colspan="3">No Data Available</td></tr>'
+                );
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Move Div Items Both Ways</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        .container {
+            width: 200px;
+            min-height: 150px;
+            border: 2px solid #333;
+            display: inline-block;
+            vertical-align: top;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        .item {
+            background: #2196f3;
+            color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="div1" class="container">
+        <h3>Div 1</h3>
+
+        <div class="item">Item</div>
+    </div>
+
+    <div id="div2" class="container">
+        <h3>Div 2</h3>
+    </div>
+
+    <br>
+
+    <button id="toRight">1st → 2nd</button>
+    <button id="toLeft">2nd → 1st</button>
+
+    <script>
+
+        $("#toRight").click(function () {
+            $("#div1 .item").first().appendTo("#div2");
+        });
+
+        $("#toLeft").click(function () {
+            $("#div2 .item").first().appendTo("#div1");
+        });
+
+    </script>
+
+</body>
+
+</html>
