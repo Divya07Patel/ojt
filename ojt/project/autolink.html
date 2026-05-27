@@ -22,481 +22,148 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.97);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.97); }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        body { background-color: var(--bg-light); color: var(--text-dark); display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
 
-        .navbar {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition-smooth);
-        }
+        /* ── NAVBAR ── */
+        .navbar { background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226,232,240,0.8); position: sticky; top: 0; z-index: 1000; transition: var(--transition-smooth); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 2rem; }
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--dark-slate); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-smooth); }
+        .logo:hover { transform: scale(1.03); color: var(--primary); }
+        .logo i { color: var(--primary); transition: transform 0.4s var(--ease-out-cubic); }
+        .logo:hover i { transform: rotate(-10deg) scale(1.1); }
+        .nav-links { display: flex; gap: 1.5rem; }
+        .nav-item { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; position: relative; padding: 0.25rem 0; transition: var(--transition-smooth); }
+        .nav-item::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary); transition: width 0.25s var(--ease-out-cubic); }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .nav-item:hover, .nav-item.active { color: var(--dark-slate); font-weight: 600; }
+        .auth-buttons { display: flex; align-items: center; gap: 1.25rem; }
+        .btn-nav-link { background: transparent; border: none; color: var(--text-dark); font-weight: 500; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: var(--transition-smooth); }
+        .btn-nav-link:hover { color: var(--primary); transform: translateY(-1px); }
+        .btn-seller { background: var(--primary); color: white !important; border: none; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 10px rgba(37,99,235,0.15); transition: var(--transition-smooth); }
+        .btn-seller:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 14px rgba(37,99,235,0.25); }
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.85rem 2rem;
-        }
+        /* ── PAGE SECTIONS ── */
+        .page-section { display: none; opacity: 0; }
+        .page-section.active { display: block; animation: fadeIn 0.4s var(--ease-out-cubic) forwards; }
 
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--dark-slate);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition-smooth);
-        }
-        
-        .logo:hover {
-            transform: scale(1.03);
-            color: var(--primary);
-        }
+        /* ── HERO ── */
+        .hero { background-image: linear-gradient(90deg, rgba(255,255,255,0.96) 45%, rgba(255,255,255,0.8) 60%, rgba(255,255,255,0)), url('https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1800&q=80'); background-size: cover; background-position: center; margin: 0; width: 100%; border-bottom: 1px solid var(--border); position: relative; }
+        .hero-overlay { max-width: 1400px; margin: 0 auto; padding: 6.5rem 2rem; color: var(--dark-slate); animation: fadeInUp 0.7s var(--ease-out-cubic) forwards; }
+        .badge { background: #eff6ff; color: var(--primary); padding: 0.35rem 0.75rem; border-radius: 0.375rem; font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 1.25rem; border: 1px solid #dbeafe; transition: var(--transition-smooth); }
+        .hero-overlay:hover .badge { transform: translateY(-2px); background: #dbeafe; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.15; margin-bottom: 1rem; font-weight: 700; letter-spacing: -0.02em; }
+        .hero h1 .highlight { color: var(--primary); position: relative; display: inline-block; }
+        .hero-actions { display: flex; gap: 1rem; margin-top: 2rem; }
+        .btn-hero-primary { background: var(--primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 0.375rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 12px rgba(37,99,235,0.2); transition: var(--transition-smooth); }
+        .btn-hero-primary:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.3); }
+        .btn-hero-secondary { background: white; color: var(--text-dark); border: 1px solid var(--border); padding: 0.75rem 1.5rem; border-radius: 0.375rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: var(--transition-smooth); }
+        .btn-hero-secondary:hover { background: var(--bg-light); border-color: var(--text-muted); transform: translateY(-2px); }
 
-        .logo i {
-            color: var(--primary);
-            transition: transform 0.4s var(--ease-out-cubic);
-        }
-        
-        .logo:hover i {
-            transform: rotate(-10deg) scale(1.1);
-        }
+        /* ── MAIN CONTAINER ── */
+        .main-container { max-width: 1400px; margin: 0 auto; padding: 3rem 2rem; width: 100%; }
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .nav-item {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.95rem;
-            position: relative;
-            padding: 0.25rem 0;
-            transition: var(--transition-smooth);
-        }
-
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.25s var(--ease-out-cubic);
-        }
-
-        .nav-item:hover::after, .nav-item.active::after {
-            width: 100%;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            color: var(--dark-slate);
-            font-weight: 600;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-        }
-
-        .btn-nav-link {
-            background: transparent;
-            border: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: var(--transition-smooth);
-        }
-
-        .btn-nav-link:hover {
-            color: var(--primary);
-            transform: translateY(-1px);
-        }
-
-        .btn-seller {
-            background: var(--primary);
-            color: white !important;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
-            transition: var(--transition-smooth);
-        }
-
-        .btn-seller:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
-        }
-
-        .page-section {
-            display: none;
-            opacity: 0;
-        }
-
-        .page-section.active {
-            display: block;
-            animation: fadeIn 0.4s var(--ease-out-cubic) forwards;
-        }
-
-        .hero {
-            background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.96) 45%, rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0)), url('https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1800&q=80');
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            width: 100%;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-        }
-
-        .hero-overlay {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 6.5rem 2rem;
-            color: var(--dark-slate);
-            animation: fadeInUp 0.7s var(--ease-out-cubic) forwards;
-        }
-
-        .badge {
-            background: #eff6ff;
-            color: var(--primary);
-            padding: 0.35rem 0.75rem;
-            border-radius: 0.375rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.25rem;
-            border: 1px solid #dbeafe;
-            transform: translateY(0);
-            transition: var(--transition-smooth);
-        }
-        
-        .hero-overlay:hover .badge {
-            transform: translateY(-2px);
-            background: #dbeafe;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .hero h1 .highlight {
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .btn-hero-primary {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-            transition: var(--transition-smooth);
-        }
-
-        .btn-hero-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-hero-secondary {
-            background: white;
-            color: var(--text-dark);
-            border: 1px solid var(--border);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.375rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition-smooth);
-        }
-
-        .btn-hero-secondary:hover {
-            background: var(--bg-light);
-            border-color: var(--text-muted);
-            transform: translateY(-2px);
-        }
-
-        .main-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-            width: 100%;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition-smooth);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 24px -10px rgba(15, 23, 42, 0.08);
-            border-color: rgba(37, 99, 235, 0.3);
-        }
-
-        .icon-container {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.5s var(--ease-out-cubic);
-        }
-
-        .feature-card:hover .icon-container {
-            transform: scale(1.1) rotate(4deg);
-        }
-
+        /* ── FEATURES GRID ── */
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
+        .feature-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.5rem; padding: 2rem; display: flex; flex-direction: column; transition: var(--transition-smooth); }
+        .feature-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px -10px rgba(15,23,42,0.08); border-color: rgba(37,99,235,0.3); }
+        .icon-container { width: 3rem; height: 3rem; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin-bottom: 1.5rem; transition: transform 0.5s var(--ease-out-cubic); }
+        .feature-card:hover .icon-container { transform: scale(1.1) rotate(4deg); }
         .icon-container.blue { background: #eff6ff; color: #2563eb; }
         .icon-container.teal { background: #f0fdfa; color: #0d9488; }
         .icon-container.green { background: #f0fdf4; color: #16a34a; }
-
         .feature-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--dark-slate); font-weight: 600; }
         .feature-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5; }
         .feature-card .action-link { color: var(--primary); font-weight: 600; font-size: 0.95rem; text-decoration: none; margin-top: auto; display: flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+        .feature-card .action-link i { transition: transform 0.2s var(--ease-out-cubic); }
+        .feature-card:hover .action-link i { transform: translateX(4px); }
 
-        .feature-card .action-link i {
-            transition: transform 0.2s var(--ease-out-cubic);
-        }
-        .feature-card:hover .action-link i {
-            transform: translateX(4px);
-        }
-
-        .section-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 2rem;
-        }
-
+        /* ── SECTION HEADER ── */
+        .section-header-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
         .section-title { font-size: 1.75rem; font-weight: 700; color: var(--dark-slate); display: flex; align-items: center; gap: 0.5rem; }
         .section-title i { color: var(--primary); font-size: 1.4rem; }
         .view-all-link { color: var(--primary); text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: var(--transition-smooth); }
         .view-all-link:hover { color: var(--primary-hover); padding-right: 4px; }
 
-        .listings-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .car-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transition: var(--transition-smooth);
-            animation: scaleIn 0.4s var(--ease-out-cubic) backwards;
-        }
-
-        .car-card:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 12px 20px -8px rgba(15, 23, 42, 0.12);
-            border-color: #cbd5e1;
-        }
-
-        .car-image-container {
-            position: relative;
-            height: 180px;
-            width: 100%;
-            background: #cbd5e1;
-            overflow: hidden;
-        }
-
-        .car-image-container img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.6s cubic-bezier(0.2, 1, 0.2, 1);
-        }
-        
-        .car-card:hover .car-image-container img {
-            transform: scale(1.06);
-        }
-        
+        /* ── LISTINGS GRID ── */
+        .listings-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
+        .car-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 0.5rem; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; position: relative; transition: var(--transition-smooth); animation: scaleIn 0.4s var(--ease-out-cubic) backwards; }
+        .car-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 12px 20px -8px rgba(15,23,42,0.12); border-color: #cbd5e1; }
+        .car-image-container { position: relative; height: 180px; width: 100%; background: #cbd5e1; overflow: hidden; }
+        .car-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2,1,0.2,1); }
+        .car-card:hover .car-image-container img { transform: scale(1.06); }
         .badge-span { position: absolute; top: 0.75rem; padding: 0.25rem 0.5rem; font-size: 0.75rem; font-weight: 600; border-radius: 0.25rem; z-index: 2; transition: var(--transition-smooth); }
-        .badge-condition { right: 0.75rem; background: rgba(15, 23, 42, 0.8); color: white; }
+        .badge-condition { right: 0.75rem; background: rgba(15,23,42,0.8); color: white; }
         .badge-featured { left: 0.75rem; background: var(--primary); color: white; }
         .badge-new { left: 0.75rem; background: #ea580c; color: white; }
-
-        .car-card:hover .badge-span {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
+        .car-card:hover .badge-span { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .car-details-body { padding: 1.25rem; display: flex; flex-direction: column; flex-grow: 1; }
         .car-name-text { font-size: 1.1rem; font-weight: 600; color: var(--dark-slate); margin-bottom: 0.5rem; transition: color 0.2s; }
         .car-card:hover .car-name-text { color: var(--primary); }
-        
         .price-text { font-size: 1.4rem; font-weight: 700; color: var(--dark-slate); margin-bottom: 1rem; }
-        
         .specs-mini-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
         .spec-item { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
         .car-card:hover .spec-item { color: var(--text-dark); }
         .car-card:hover .spec-item i { color: var(--primary); }
-        
         .card-footer-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 0.85rem; margin-top: auto; }
         .footer-sub-text { font-size: 0.85rem; color: var(--text-muted); }
         .status-pill { font-size: 0.75rem; background: #f1f5f9; color: var(--text-dark); padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-weight: 600; }
 
-        .cta-center-box { background: var(--primary); color: white; border-radius: 0.75rem; padding: 3.5rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.4); }
+        /* ── CTA & BANNER ── */
+        .cta-center-box { background: var(--primary); color: white; border-radius: 0.75rem; padding: 3.5rem; text-align: center; margin-bottom: 2rem; box-shadow: 0 10px 20px -10px rgba(37,99,235,0.4); }
         .cta-center-box h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 0.75rem; }
         .cta-center-box p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 1.5rem; }
-        
-        .btn-white-cta { 
-            background: white; 
-            color: var(--primary); 
-            border: none; 
-            padding: 0.75rem 1.5rem; 
-            border-radius: 0.375rem; 
-            font-weight: 600; 
-            font-size: 0.95rem; 
-            cursor: pointer; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: var(--transition-smooth); 
-        }
-        .btn-white-cta:hover {
-            transform: scale(1.04) translateY(-1px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
+        .btn-white-cta { background: white; color: var(--primary); border: none; padding: 0.75rem 1.5rem; border-radius: 0.375rem; font-weight: 600; font-size: 0.95rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: var(--transition-smooth); }
+        .btn-white-cta:hover { transform: scale(1.04) translateY(-1px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
         .ecosystem-banner { background: #f1f5f9; border: 1px solid var(--border); padding: 2.5rem; border-radius: 0.5rem; text-align: center; margin-top: 1rem; margin-bottom: 3rem; }
         .ecosystem-banner h3 { font-size: 1.5rem; color: var(--dark-slate); margin-bottom: 0.5rem; }
         .ecosystem-banner p { color: var(--text-muted); }
 
+        /* ── BROWSE PAGE ── */
         .browse-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
         .search-filters-container { display: flex; gap: 1rem; align-items: center; }
+
+        /* FIX #1: icon now sits AFTER the input via flexbox row-reverse so the + sibling selector works,
+           OR we use a wrapper with flex and pointer-events for the icon. 
+           Cleanest fix: use a label wrapper with flex and position the icon absolutely but switch selector to :focus-within */
         .search-input-wrapper { position: relative; }
-        .search-input-wrapper i { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); transition: color 0.2s; }
+        .search-input-wrapper i { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); transition: color 0.2s; pointer-events: none; }
+        /* FIX #1: Use :focus-within on the wrapper instead of the broken + sibling selector */
+        .search-input-wrapper:focus-within i { color: var(--primary); }
         .search-input-wrapper input { padding: 0.5rem 0.75rem 0.5rem 2.2rem; border: 1px solid var(--border); border-radius: 0.375rem; width: 260px; font-size: 0.9rem; transition: var(--transition-smooth); }
-        .search-input-wrapper input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
-        .search-input-wrapper input:focus + i { color: var(--primary); }
+        .search-input-wrapper input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
         .filter-select { padding: 0.5rem 2rem 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: 0.375rem; font-size: 0.9rem; color: var(--text-dark); background: white; cursor: pointer; transition: var(--transition-smooth); }
         .filter-select:hover { border-color: var(--text-muted); }
 
-        .detail-view-container { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 1rem; margin-bottom: 4rem; animation: fadeInUp 0.5s var(--ease-out-cubic) forwards;}
+        /* ── VEHICLE DETAIL ── */
+        .detail-view-container { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 1rem; margin-bottom: 4rem; animation: fadeInUp 0.5s var(--ease-out-cubic) forwards; }
         .detail-main-card { background: white; border: 1px solid var(--border); border-radius: 0.5rem; padding: 2rem; }
-        .detail-meta-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
-        .detail-title-price-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+        .detail-meta-row { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+        .detail-title-price-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 1rem; }
         .detail-title { font-size: 2rem; font-weight: 700; color: var(--dark-slate); }
-        .detail-price { font-size: 2rem; font-weight: 700; color: var(--primary); }
+        .detail-price { font-size: 2rem; font-weight: 700; color: var(--primary); white-space: nowrap; }
         .detail-location { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.3rem; }
-        
-        .detail-hero-image { width: 100%; height: 400px; border-radius: 0.5rem; overflow: hidden; margin-bottom: 2rem; background: #cbd5e1; box-shadow: inset 0 0 20px rgba(0,0,0,0.05); }
+        .detail-hero-image { width: 100%; height: 400px; border-radius: 0.5rem; overflow: hidden; margin-bottom: 2rem; background: #cbd5e1; }
         .detail-hero-image img { width: 100%; height: 100%; object-fit: cover; }
-        
         .detail-specs-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem; margin-bottom: 2rem; background: #fafafa; }
         .spec-bar-box { text-align: left; }
         .spec-bar-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.3rem; }
         .spec-bar-value { font-size: 1rem; font-weight: 600; color: var(--dark-slate); }
-        
         .detail-description h4 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--dark-slate); }
         .detail-description p { color: var(--text-muted); line-height: 1.6; font-size: 1rem; }
-        
         .detail-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
         .sidebar-widget { background: white; border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; transition: var(--transition-smooth); }
         .sidebar-widget:hover { box-shadow: 0 8px 20px -6px rgba(0,0,0,0.05); }
@@ -504,25 +171,8 @@
         .seller-profile { margin-bottom: 1.25rem; }
         .seller-label { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.25rem; }
         .seller-name { font-size: 1.1rem; font-weight: 600; color: var(--dark-slate); }
-        
-        .btn-msg { 
-            width: 100%; 
-            background: var(--primary); 
-            color: white; 
-            border: none; 
-            padding: 0.75rem; 
-            border-radius: 0.375rem; 
-            font-weight: 600; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 0.5rem; 
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
-            transition: var(--transition-smooth); 
-        }
-        .btn-msg:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25); }
-        
+        .btn-msg { width: 100%; background: var(--primary); color: white; border: none; padding: 0.75rem; border-radius: 0.375rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 10px rgba(37,99,235,0.15); transition: var(--transition-smooth); }
+        .btn-msg:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 6px 14px rgba(37,99,235,0.25); }
         .service-promo-item { display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: var(--transition-smooth); }
         .service-promo-item:last-child { border-bottom: none; }
         .service-promo-item:hover { transform: translateX(4px); }
@@ -531,11 +181,13 @@
         .service-promo-text h5 { font-size: 0.95rem; font-weight: 600; color: var(--dark-slate); }
         .service-promo-text p { font-size: 0.85rem; color: var(--text-muted); }
 
+        /* ── SUBPAGE HEADERS ── */
         .subpage-header { text-align: center; max-width: 600px; margin: 2rem auto 3rem; }
         .avatar-placeholder { width: 3.5rem; height: 3.5rem; background: #eff6ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem; }
         .subpage-header h1 { font-size: 2.25rem; font-weight: 700; color: var(--dark-slate); margin-bottom: 0.5rem; }
         .subpage-header p { color: var(--text-muted); font-size: 1rem; line-height: 1.5; }
 
+        /* ── PROVIDERS ── */
         .providers-layout-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
         .provider-item-card { background: white; border: 1px solid var(--border); border-radius: 0.5rem; padding: 2rem; position: relative; display: flex; flex-direction: column; transition: var(--transition-smooth); }
         .provider-item-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px -8px rgba(0,0,0,0.06); border-color: #cbd5e1; }
@@ -547,22 +199,10 @@
         .provider-contact-info { border-top: 1px solid #f1f5f9; padding-top: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.4rem; }
         .provider-contact-info span { display: flex; align-items: center; gap: 0.5rem; }
         .delivery-time { font-size: 0.9rem; color: var(--green); margin-bottom: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
-        
-        .btn-provider-action { 
-            background: #eff6ff; 
-            color: var(--primary); 
-            border: 1px solid #dbeafe; 
-            padding: 0.65rem; 
-            width: 100%; 
-            border-radius: 0.375rem; 
-            font-weight: 600; 
-            cursor: pointer; 
-            transition: var(--transition-smooth); 
-            text-align: center; 
-            margin-top: auto; 
-        }
-        .btn-provider-action:hover { background: var(--primary); color: white; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15); }
+        .btn-provider-action { background: #eff6ff; color: var(--primary); border: 1px solid #dbeafe; padding: 0.65rem; width: 100%; border-radius: 0.375rem; font-weight: 600; cursor: pointer; transition: var(--transition-smooth); text-align: center; margin-top: auto; }
+        .btn-provider-action:hover { background: var(--primary); color: white; transform: translateY(-1px); box-shadow: 0 4px 10px rgba(37,99,235,0.15); }
 
+        /* ── DASHBOARD ── */
         .dashboard-header h1 { font-size: 2rem; font-weight: 700; color: var(--dark-slate); }
         .dashboard-header p { color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 2rem; }
         .dashboard-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
@@ -572,7 +212,6 @@
         .dashboard-stat-card h4 i { font-size: 1.1rem; color: var(--text-muted); }
         .dashboard-stat-num { font-size: 2.25rem; font-weight: 700; color: var(--dark-slate); margin: 0.5rem 0 0.25rem; }
         .dashboard-stat-meta { font-size: 0.85rem; color: var(--text-muted); }
-        
         .dashboard-split-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
         .dashboard-panel-box { background: white; border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.5rem; }
         .panel-heading { font-size: 1.1rem; font-weight: 600; color: var(--dark-slate); margin-bottom: 1.25rem; }
@@ -580,7 +219,7 @@
         .dash-car-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 1rem; }
         .dash-car-item:last-child { border-bottom: none; padding-bottom: 0; }
         .dash-car-left { display: flex; gap: 1rem; align-items: center; }
-        .dash-car-thumb { width: 80px; height: 50px; border-radius: 0.25rem; overflow: hidden; background: #cbd5e1; }
+        .dash-car-thumb { width: 80px; height: 50px; border-radius: 0.25rem; overflow: hidden; background: #cbd5e1; flex-shrink: 0; }
         .dash-car-thumb img { width: 100%; height: 100%; object-fit: cover; }
         .dash-car-meta h5 { font-size: 0.95rem; font-weight: 600; color: var(--dark-slate); }
         .dash-car-meta p { font-size: 0.8rem; color: var(--text-muted); }
@@ -589,50 +228,51 @@
         .dash-car-status { font-size: 0.8rem; color: var(--green); font-weight: 500; }
         .empty-inquiries-box { text-align: center; color: var(--text-muted); padding: 4rem 0; font-size: 0.95rem; }
 
+        /* ── AUTH ── */
         .auth-container-fullscreen { display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 58px); }
-        
         .auth-side-banner { color: white; padding: 5rem; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
         .auth-side-banner.buyer { background-color: #1e3a8a; }
         .auth-side-banner.seller { background-color: #0f172a; }
-        
-        .auth-side-banner::before {
-            content: ''; position: absolute; width: 300px; height: 300px; background: rgba(37, 99, 235, 0.2); border-radius: 50%; bottom: 80px; filter: blur(80px); top: -50px; right: -50px;
-        }
-        
+        .auth-side-banner::before { content: ''; position: absolute; width: 300px; height: 300px; background: rgba(37,99,235,0.2); border-radius: 50%; filter: blur(80px); top: -50px; right: -50px; }
         .auth-side-banner h2 { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 2rem; position: relative; z-index: 2; }
         .auth-side-banner ul { list-style: none; display: flex; flex-direction: column; gap: 1rem; position: relative; z-index: 2; }
-        .auth-side-banner li { display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem; opacity: 0.9; transform: translateX(0); transition: transform 0.3s var(--ease-out-cubic); }
+        .auth-side-banner li { display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem; opacity: 0.9; transition: transform 0.3s var(--ease-out-cubic); }
         .auth-side-banner:hover li { transform: translateX(4px); }
         .auth-side-banner li i { color: #60a5fa; }
-        
         .auth-side-form-space { background: white; padding: 5rem; display: flex; align-items: center; justify-content: center; }
         .auth-card-wrapper { width: 100%; max-width: 400px; animation: scaleIn 0.4s var(--ease-out-cubic); }
         .auth-badge-top { display: inline-flex; align-items: center; gap: 0.4rem; background: #f1f5f9; color: var(--text-dark); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
-        
         .auth-card-wrapper h3 { font-size: 1.75rem; font-weight: 700; color: var(--dark-slate); margin-bottom: 0.5rem; }
-        .auth-card-wrapper p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; }
-        
+        .auth-card-wrapper > p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+        /* ── FORM ELEMENTS ── */
         .form-group-block { margin-bottom: 1.25rem; }
         .form-group-block label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--dark-slate); margin-bottom: 0.5rem; }
-        
+        /* FIX #3: Password label row — flex row with space-between keeps label left, link right */
+        .label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+        .label-row label { margin-bottom: 0; }
+        .forgot-password-link { font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 500; }
+        .forgot-password-link:hover { text-decoration: underline; }
         .input-password-container { position: relative; display: flex; align-items: center; }
         .input-password-container input { width: 100%; padding: 0.6rem 2.5rem 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: 0.375rem; font-size: 0.95rem; transition: var(--transition-smooth); }
-        .input-password-container input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .input-password-container input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
         .input-password-container i { position: absolute; right: 0.75rem; color: var(--text-muted); cursor: pointer; }
-        
-        .form-group-block input[type="email"] { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: 0.375rem; font-size: 0.95rem; transition: var(--transition-smooth); }
-        .form-group-block input[type="email"]:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
-        
-        .forgot-password-link { float: right; font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 500; margin-top: -0.2rem; }
-        .forgot-password-link:hover { text-decoration: underline; }
-        
+        .form-group-block input[type="email"],
+        .form-group-block input[type="text"] { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: 0.375rem; font-size: 0.95rem; transition: var(--transition-smooth); }
+        .form-group-block input[type="email"]:focus,
+        .form-group-block input[type="text"]:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
         .btn-form-submit { width: 100%; padding: 0.75rem; border: none; border-radius: 0.375rem; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: 1rem; margin-bottom: 1.5rem; transition: var(--transition-smooth); }
-        .btn-form-submit.buyer-theme { background: #1e3a8a; color: white; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2); }
-        .btn-form-submit.buyer-theme:hover { background: #172554; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(30, 58, 138, 0.3); }
-        
-        .btn-form-submit.seller-theme { background: #0f172a; color: white; box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2); }
-        .btn-form-submit.seller-theme:hover { background: #020617; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(15, 23, 42, 0.3); }
-        
+        .btn-form-submit.buyer-theme { background: #1e3a8a; color: white; box-shadow: 0 4px 12px rgba(30,58,138,0.2); }
+        .btn-form-submit.buyer-theme:hover { background: #172554; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(30,58,138,0.3); }
+        .btn-form-submit.seller-theme { background: #0f172a; color: white; box-shadow: 0 4px 12px rgba(15,23,42,0.2); }
+        .btn-form-submit.seller-theme:hover { background: #020617; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(15,23,42,0.3); }
+
+        /* FIX #2: Toast notification for login feedback */
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--dark-slate); color: white; padding: 0.85rem 1.25rem; border-radius: 0.5rem; font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; gap: 0.6rem; box-shadow: 0 8px 24px rgba(0,0,0,0.15); z-index: 9999; transform: translateY(0); opacity: 1; transition: all 0.3s var(--ease-out-cubic); }
+        .toast.toast-success { background: #15803d; }
+        .toast.toast-error { background: #b91c1c; }
+        .toast.hidden { transform: translateY(1rem); opacity: 0; pointer-events: none; }
+
         .auth-switch-prompt { text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem; }
         .auth-switch-prompt a { color: var(--primary); text-decoration: none; font-weight: 500; }
         .auth-switch-prompt a:hover { text-decoration: underline; }
@@ -640,27 +280,16 @@
         .back-home-prompt a { color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
         .back-home-prompt a:hover { color: var(--text-dark); }
 
-        .main-footer {
-            background: white;
-            border-top: 1px solid var(--border);
-            padding: 4rem 2rem 2rem;
-            margin-top: auto;
-        }
-
-        .footer-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 4rem;
-        }
-
+        /* ── FOOTER ── */
+        .main-footer { background: white; border-top: 1px solid var(--border); padding: 4rem 2rem 2rem; margin-top: auto; }
+        .footer-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
         .footer-brand p { color: var(--text-muted); margin-top: 1rem; font-size: 0.95rem; line-height: 1.6; max-width: 320px; }
         .footer-links h4 { margin-bottom: 1rem; color: var(--dark-slate); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
         .footer-links a { display: block; text-decoration: none; color: var(--text-muted); margin-bottom: 0.5rem; font-size: 0.95rem; transition: var(--transition-smooth); }
         .footer-links a:hover { color: var(--primary); transform: translateX(2px); }
         .footer-bottom { text-align: center; border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem; }
 
+        /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
             .listings-grid { grid-template-columns: repeat(2, 1fr); }
             .providers-layout-grid { grid-template-columns: repeat(2, 1fr); }
@@ -669,15 +298,23 @@
             .auth-side-banner { display: none; }
             .dashboard-container { grid-template-columns: repeat(2, 1fr); }
             .dashboard-split-row { grid-template-columns: 1fr; }
+            .detail-view-container { grid-template-columns: 1fr; }
+            .detail-specs-bar { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 640px) {
             .listings-grid, .providers-layout-grid, .dashboard-container { grid-template-columns: 1fr; }
             .nav-links, .auth-buttons { display: none; }
             .hero h1 { font-size: 2.25rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .browse-header-row { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .detail-specs-bar { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
+
+    <!-- Toast notification (FIX #2) -->
+    <div id="toast-msg" class="toast hidden"></div>
 
     <header class="navbar">
         <div class="nav-container">
@@ -685,10 +322,10 @@
                 <i class="fa-solid fa-car-side"></i> AutoLink
             </div>
             <nav class="nav-links">
-                <a href="#" class="nav-item active" id="tab-home" onclick="switchTab('home')">Browse Cars</a>
-                <a href="#" class="nav-item" id="tab-insurance" onclick="switchTab('insurance')">Insurance</a>
-                <a href="#" class="nav-item" id="tab-shipping" onclick="switchTab('shipping')">Shipping</a>
-                <a href="#" class="nav-item" id="tab-dashboard" onclick="switchTab('dashboard')">Dashboard</a>
+                <a href="#" class="nav-item active" id="tab-home" onclick="switchTab('home'); return false;">Browse Cars</a>
+                <a href="#" class="nav-item" id="tab-insurance" onclick="switchTab('insurance'); return false;">Insurance</a>
+                <a href="#" class="nav-item" id="tab-shipping" onclick="switchTab('shipping'); return false;">Shipping</a>
+                <a href="#" class="nav-item" id="tab-dashboard" onclick="switchTab('dashboard'); return false;">Dashboard</a>
             </nav>
             <div class="auth-buttons">
                 <button class="btn-nav-link" onclick="switchTab('buyer-login')"><i class="fa-regular fa-user"></i> Buyer Login</button>
@@ -699,6 +336,7 @@
 
     <main class="content-wrapper">
 
+        <!-- HOME -->
         <section id="page-home" class="page-section active">
             <div class="hero">
                 <div class="hero-overlay">
@@ -736,7 +374,7 @@
 
                 <div class="section-header-row">
                     <div class="section-title"><i class="fa-solid fa-bolt"></i> Featured Listings</div>
-                    <a href="#" class="view-all-link" onclick="switchTab('browse-market')">View all <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#" class="view-all-link" onclick="switchTab('browse-market'); return false;">View all <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="listings-grid" id="featured-listings-gallery"></div>
 
@@ -758,6 +396,7 @@
             </div>
         </section>
 
+        <!-- BROWSE MARKET -->
         <section id="page-browse-market" class="page-section">
             <div class="main-container">
                 <div class="browse-header-row">
@@ -766,28 +405,40 @@
                         <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">Find the perfect vehicle from our verified private sellers.</p>
                     </div>
                     <div class="search-filters-container">
+                        <!-- FIX #1: icon is INSIDE wrapper, :focus-within handles color change -->
                         <div class="search-input-wrapper">
                             <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" placeholder="Search by make (e.g. Toyota)">
+                            <input type="text" id="search-input" placeholder="Search by make (e.g. Toyota)" oninput="filterListings()">
                         </div>
-                        <select class="filter-select">
-                            <option>All Conditions</option>
+                        <select class="filter-select" id="filter-condition" onchange="filterListings()">
+                            <option value="">All Conditions</option>
+                            <option value="New">New</option>
+                            <option value="Used">Used</option>
                         </select>
-                        <select class="filter-select">
-                            <option>Any Price</option>
+                        <select class="filter-select" id="filter-price" onchange="filterListings()">
+                            <option value="">Any Price</option>
+                            <option value="30000">Under $30,000</option>
+                            <option value="40000">Under $40,000</option>
+                            <option value="50000">Under $50,000</option>
                         </select>
                     </div>
                 </div>
                 <div class="listings-grid" id="full-marketplace-gallery"></div>
+                <p id="no-results-msg" style="display:none; color:var(--text-muted); text-align:center; padding: 3rem 0;">No vehicles match your search.</p>
             </div>
         </section>
 
+        <!-- VEHICLE DETAIL -->
         <section id="page-vehicle-detail" class="page-section">
             <div class="main-container">
+                <button onclick="history.back ? switchTab('browse-market') : null" style="display:inline-flex;align-items:center;gap:0.4rem;background:none;border:none;color:var(--text-muted);font-size:0.95rem;cursor:pointer;margin-bottom:1.5rem;padding:0;transition:var(--transition-smooth);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">
+                    <i class="fa-solid fa-arrow-left"></i> Back to listings
+                </button>
                 <div class="detail-view-container" id="dynamic-detail-target"></div>
             </div>
         </section>
 
+        <!-- INSURANCE -->
         <section id="page-insurance" class="page-section">
             <div class="main-container">
                 <div class="subpage-header">
@@ -800,12 +451,12 @@
                         <div class="star-rating"><i class="fa-solid fa-star"></i> 4.8</div>
                         <h3>AutoShield Insurance</h3>
                         <p>Leading provider of comprehensive auto insurance with 20+ years of experience protecting vehicle owners.</p>
-                        <div class="provider-tags"><span>Comprehensive</span><span>Third Party</span><span>Fire & Theft</span></div>
+                        <div class="provider-tags"><span>Comprehensive</span><span>Third Party</span><span>Fire &amp; Theft</span></div>
                         <div class="provider-contact-info">
                             <span><i class="fa-regular fa-envelope"></i> quotes@autoshield.com</span>
                             <span><i class="fa-solid fa-phone"></i> +1-800-AUTO-001</span>
                         </div>
-                        <button class="btn-provider-action">Request Quote</button>
+                        <button class="btn-provider-action" onclick="showToast('Quote request sent to AutoShield Insurance!', 'success')">Request Quote</button>
                     </div>
                     <div class="provider-item-card">
                         <div class="star-rating"><i class="fa-solid fa-star"></i> 4.6</div>
@@ -816,7 +467,7 @@
                             <span><i class="fa-regular fa-envelope"></i> info@driveguard.com</span>
                             <span><i class="fa-solid fa-phone"></i> +1-800-DRIVE-02</span>
                         </div>
-                        <button class="btn-provider-action">Request Quote</button>
+                        <button class="btn-provider-action" onclick="showToast('Quote request sent to DriveGuard Partners!', 'success')">Request Quote</button>
                     </div>
                     <div class="provider-item-card">
                         <div class="star-rating"><i class="fa-solid fa-star"></i> 4.4</div>
@@ -827,12 +478,13 @@
                             <span><i class="fa-regular fa-envelope"></i> help@saferide.com</span>
                             <span><i class="fa-solid fa-phone"></i> +1-800-SAFE-003</span>
                         </div>
-                        <button class="btn-provider-action">Request Quote</button>
+                        <button class="btn-provider-action" onclick="showToast('Quote request sent to SafeRide Assurance!', 'success')">Request Quote</button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SHIPPING -->
         <section id="page-shipping" class="page-section">
             <div class="main-container">
                 <div class="subpage-header">
@@ -851,7 +503,7 @@
                             <span><i class="fa-regular fa-envelope"></i> ship@transauto.com</span>
                             <span><i class="fa-solid fa-phone"></i> +1-800-TRANS-01</span>
                         </div>
-                        <button class="btn-provider-action">Request Quote</button>
+                        <button class="btn-provider-action" onclick="showToast('Quote request sent to TransAuto Logistics!', 'success')">Request Quote</button>
                     </div>
                     <div class="provider-item-card">
                         <div class="star-rating"><i class="fa-solid fa-star"></i> 4.7</div>
@@ -863,7 +515,7 @@
                             <span><i class="fa-regular fa-envelope"></i> freight@swiftcar.com</span>
                             <span><i class="fa-solid fa-phone"></i> +1-800-SWIFT-04</span>
                         </div>
-                        <button class="btn-provider-action">Request Quote</button>
+                        <button class="btn-provider-action" onclick="showToast('Quote request sent to SwiftCar Freight!', 'success')">Request Quote</button>
                     </div>
                     <div class="provider-item-card">
                         <div class="star-rating"><i class="fa-solid fa-star"></i> 4.5</div>
@@ -875,12 +527,13 @@
                             <span><i class="fa-regular fa-envelope"></i> move@globalauto.com</span>
                             <span><i class="fa-solid fa-phone"></i> +1-800-GLOBE-03</span>
                         </div>
-                        <button class="btn-provider-action">Request Quote</button>
+                        <button class="btn-provider-action" onclick="showToast('Quote request sent to GlobalAuto Movers!', 'success')">Request Quote</button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- DASHBOARD -->
         <section id="page-dashboard" class="page-section">
             <div class="main-container">
                 <div class="dashboard-header">
@@ -888,10 +541,11 @@
                     <p>Platform health and recent activity overview.</p>
                 </div>
                 <div class="dashboard-container">
+                    <!-- FIX #5: Total listings count is now set dynamically via JS -->
                     <div class="dashboard-stat-card">
                         <h4>Total Listings <i class="fa-solid fa-list"></i></h4>
-                        <div class="dashboard-stat-num">8</div>
-                        <div class="dashboard-stat-meta">2 new / 6 used</div>
+                        <div class="dashboard-stat-num" id="stat-total-listings">—</div>
+                        <div class="dashboard-stat-meta" id="stat-listings-breakdown">—</div>
                     </div>
                     <div class="dashboard-stat-card">
                         <h4>Cars Sold <i class="fa-solid fa-handshake"></i></h4>
@@ -917,20 +571,21 @@
                     </div>
                     <div class="dashboard-panel-box">
                         <div class="panel-heading">Recent Buyer Inquiries</div>
-                        <div class="empty-inquiries-box">No recent inquiries</div>
+                        <div class="empty-inquiries-box"><i class="fa-regular fa-comment" style="font-size:1.5rem;margin-bottom:0.5rem;display:block;"></i>No recent inquiries</div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- BUYER LOGIN -->
         <section id="page-buyer-login" class="page-section">
             <div class="auth-container-fullscreen">
                 <div class="auth-side-banner buyer">
-                    <h2>Access the largest buyer network. <br>Direct interface.</h2>
+                    <h2>Access the largest buyer network. Direct interface.</h2>
                     <ul>
-                        <li><i class="fa-solid fa-circle-check"></i> Browse 8,000+ verified listings</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Browse verified listings</li>
                         <li><i class="fa-solid fa-circle-check"></i> Integrated insurance quotes</li>
-                        <li><i class="fa-solid fa-circle-check"></i> Direct seller contact - zero fees</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Direct seller contact — zero fees</li>
                     </ul>
                 </div>
                 <div class="auth-side-form-space">
@@ -938,28 +593,31 @@
                         <span class="auth-badge-top"><i class="fa-solid fa-lock"></i> Buyer Account</span>
                         <h3>Welcome back</h3>
                         <p>Sign in to your buyer account to browse listings.</p>
-                        <form onsubmit="event.preventDefault();">
-                            <div class="form-group-block">
-                                <label>Email Address</label>
-                                <input type="email" placeholder="you@example.com" required>
+                        <!-- FIX #2: form gives user feedback on submit -->
+                        <div class="form-group-block">
+                            <label for="buyer-email">Email Address</label>
+                            <input type="email" id="buyer-email" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group-block">
+                            <!-- FIX #3: label + forgot link in proper flex row -->
+                            <div class="label-row">
+                                <label for="buyer-password">Password</label>
+                                <a href="#" class="forgot-password-link" onclick="return false;">Forgot password?</a>
                             </div>
-                            <div class="form-group-block">
-                                <a href="#" class="forgot-password-link">Forgot password?</a>
-                                <label>Password</label>
-                                <div class="input-password-container">
-                                    <input type="password" value="••••••••" required>
-                                    <i class="fa-regular fa-eye-slash"></i>
-                                </div>
+                            <div class="input-password-container">
+                                <input type="password" id="buyer-password" placeholder="••••••••">
+                                <i class="fa-regular fa-eye-slash" onclick="togglePassword('buyer-password', this)"></i>
                             </div>
-                            <button type="submit" class="btn-form-submit buyer-theme">Sign In as Buyer →</button>
-                        </form>
-                        <div class="auth-switch-prompt">Don't have an account? <a href="#">Create one free</a></div>
-                        <div class="back-home-prompt"><a href="#" onclick="switchTab('home')"><i class="fa-solid fa-arrow-left"></i> Back to AutoLink</a></div>
+                        </div>
+                        <button class="btn-form-submit buyer-theme" onclick="handleLogin('buyer')">Sign In as Buyer →</button>
+                        <div class="auth-switch-prompt">Don't have an account? <a href="#" onclick="return false;">Create one free</a></div>
+                        <div class="back-home-prompt"><a href="#" onclick="switchTab('home'); return false;"><i class="fa-solid fa-arrow-left"></i> Back to AutoLink</a></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SELLER LOGIN -->
         <section id="page-seller-login" class="page-section">
             <div class="auth-container-fullscreen">
                 <div class="auth-side-form-space">
@@ -967,23 +625,25 @@
                         <span class="auth-badge-top"><i class="fa-solid fa-briefcase"></i> Seller Account</span>
                         <h3>Welcome back</h3>
                         <p>Sign in to manage your listings and respond to buyer inquiries.</p>
-                        <form onsubmit="event.preventDefault();">
-                            <div class="form-group-block">
-                                <label>Email Address</label>
-                                <input type="email" placeholder="you@example.com" required>
+                        <!-- FIX #2: form gives user feedback on submit -->
+                        <div class="form-group-block">
+                            <label for="seller-email">Email Address</label>
+                            <input type="email" id="seller-email" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group-block">
+                            <!-- FIX #3: label + forgot link in proper flex row -->
+                            <div class="label-row">
+                                <label for="seller-password">Password</label>
+                                <a href="#" class="forgot-password-link" onclick="return false;">Forgot password?</a>
                             </div>
-                            <div class="form-group-block">
-                                <a href="#" class="forgot-password-link">Forgot password?</a>
-                                <label>Password</label>
-                                <div class="input-password-container">
-                                    <input type="password" value="••••••••" required>
-                                    <i class="fa-regular fa-eye-slash"></i>
-                                </div>
+                            <div class="input-password-container">
+                                <input type="password" id="seller-password" placeholder="••••••••">
+                                <i class="fa-regular fa-eye-slash" onclick="togglePassword('seller-password', this)"></i>
                             </div>
-                            <button type="submit" class="btn-form-submit seller-theme">Sign In as Seller →</button>
-                        </form>
-                        <div class="auth-switch-prompt">Don't have an account? <a href="#">Create one free</a></div>
-                        <div class="back-home-prompt"><a href="#" onclick="switchTab('home')"><i class="fa-solid fa-arrow-left"></i> Back to AutoLink</a></div>
+                        </div>
+                        <button class="btn-form-submit seller-theme" onclick="handleLogin('seller')">Sign In as Seller →</button>
+                        <div class="auth-switch-prompt">Don't have an account? <a href="#" onclick="return false;">Create one free</a></div>
+                        <div class="back-home-prompt"><a href="#" onclick="switchTab('home'); return false;"><i class="fa-solid fa-arrow-left"></i> Back to AutoLink</a></div>
                     </div>
                 </div>
                 <div class="auth-side-banner seller">
@@ -996,7 +656,7 @@
                         <li><i class="fa-solid fa-comments"></i> Receive direct buyer inquiries</li>
                         <li><i class="fa-solid fa-chart-simple"></i> Track views and manage listings</li>
                     </ul>
-                    <div style="margin-top:3rem; font-size:0.95rem; opacity:0.9;">Are you a buyer? <a href="#" onclick="switchTab('buyer-login')" style="color:#60a5fa; text-decoration:underline;">Buyer login</a></div>
+                    <div style="margin-top:3rem; font-size:0.95rem; opacity:0.9;">Are you a buyer? <a href="#" onclick="switchTab('buyer-login'); return false;" style="color:#60a5fa; text-decoration:underline;">Buyer login</a></div>
                 </div>
             </div>
         </section>
@@ -1011,31 +671,32 @@
             </div>
             <div class="footer-links">
                 <h4>Platform</h4>
-                <a href="#" onclick="switchTab('browse-market')">Browse Cars</a>
-                <a href="#" onclick="switchTab('seller-login')">Sell a Car</a>
-                <a href="#" onclick="switchTab('dashboard')">Marketplace Stats</a>
+                <a href="#" onclick="switchTab('browse-market'); return false;">Browse Cars</a>
+                <a href="#" onclick="switchTab('seller-login'); return false;">Sell a Car</a>
+                <a href="#" onclick="switchTab('dashboard'); return false;">Marketplace Stats</a>
             </div>
             <div class="footer-links">
                 <h4>Partners</h4>
-                <a href="#" onclick="switchTab('insurance')">Insurance Providers</a>
-                <a href="#" onclick="switchTab('shipping')">Shipping & Transport</a>
+                <a href="#" onclick="switchTab('insurance'); return false;">Insurance Providers</a>
+                <a href="#" onclick="switchTab('shipping'); return false;">Shipping &amp; Transport</a>
             </div>
         </div>
-        
         <div class="footer-bottom">
             contact us: <a href="mailto:info@autolink.com">info@autolink.com</a> | 123-456-7890 <br>
-            follow us: <a href="#">Twitter</a> | <a href="#">Facebook</a> | <a href="#">Instagram</a> <br> 
+            follow us: <a href="#" onclick="return false;">Twitter</a> | <a href="#" onclick="return false;">Facebook</a> | <a href="#" onclick="return false;">Instagram</a> <br>
             &copy; 2026 AutoLink Marketplace. All rights reserved.
         </div>
     </footer>
 
     <script>
+        /* ── DATA ── */
         const vehicleDatabase = [
             {
                 id: "camry-2023",
                 title: "2023 Toyota Camry Hybrid XSE",
                 shortName: "Toyota Camry • 2023",
                 price: "$32,500",
+                priceNum: 32500,
                 mileage: "8,200 mi",
                 transmission: "Automatic",
                 fuel: "Hybrid",
@@ -1053,6 +714,7 @@
                 title: "2024 BMW 3 Series 330i",
                 shortName: "BMW 3 Series • 2024",
                 price: "$48,900",
+                priceNum: 48900,
                 mileage: "2,100 mi",
                 transmission: "Automatic",
                 fuel: "Petrol",
@@ -1070,6 +732,7 @@
                 title: "2022 Tesla Model 3 Long Range",
                 shortName: "Tesla Model 3 • 2022",
                 price: "$39,800",
+                priceNum: 39800,
                 mileage: "22,400 mi",
                 transmission: "Automatic",
                 fuel: "Electric",
@@ -1087,6 +750,7 @@
                 title: "2021 Ford Mustang GT 5.0",
                 shortName: "Ford Mustang • 2021",
                 price: "$34,200",
+                priceNum: 34200,
                 mileage: "18,900 mi",
                 transmission: "Manual",
                 fuel: "Petrol",
@@ -1104,6 +768,7 @@
                 title: "2024 Kia EV6 GT-Line",
                 shortName: "Kia EV6 • 2024",
                 price: "$52,000",
+                priceNum: 52000,
                 mileage: "1,500 mi",
                 transmission: "Automatic",
                 fuel: "Electric",
@@ -1115,13 +780,27 @@
                 date: "Apr 05, 2026",
                 image: "https://img-cdn.evfy.in/products/EV6%20(Primary%20image).jpg",
                 description: "Next-gen clean electric performance. 2024 Kia EV6 GT-Line variant. Ultra-fast 800V charging system capability, augmented reality heads-up instrument view, and state-of-the-art safety configurations."
-            },
+            }
         ];
 
+        /* ── INIT ── */
         document.addEventListener("DOMContentLoaded", () => {
             renderGalleries();
+            updateDashboardStats();
         });
 
+        /* ── FIX #5: Dynamic dashboard stats ── */
+        function updateDashboardStats() {
+            const total = vehicleDatabase.length;
+            const newCount = vehicleDatabase.filter(c => c.condition === 'New').length;
+            const usedCount = vehicleDatabase.filter(c => c.condition === 'Used').length;
+            const statEl = document.getElementById('stat-total-listings');
+            const breakEl = document.getElementById('stat-listings-breakdown');
+            if (statEl) statEl.textContent = total;
+            if (breakEl) breakEl.textContent = `${newCount} new / ${usedCount} used`;
+        }
+
+        /* ── RENDER GALLERIES ── */
         function renderGalleries() {
             const featuredContainer = document.getElementById('featured-listings-gallery');
             const freshContainer = document.getElementById('fresh-listings-gallery');
@@ -1134,13 +813,13 @@
             if (featuredContainer) featuredContainer.innerHTML = featuredCars.map((c, i) => generateCardHtml(c, i)).join('');
             if (freshContainer) freshContainer.innerHTML = freshCars.map((c, i) => generateCardHtml(c, i)).join('');
             if (fullMarketContainer) fullMarketContainer.innerHTML = vehicleDatabase.map((c, i) => generateCardHtml(c, i)).join('');
-            
+
+            /* FIX #4: alt attributes added to dashboard thumbnails */
             if (dashRecentContainer) {
-                const dashSelection = vehicleDatabase.slice(0, 5);
-                dashRecentContainer.innerHTML = dashSelection.map(car => `
+                dashRecentContainer.innerHTML = vehicleDatabase.slice(0, 5).map(car => `
                     <div class="dash-car-item">
                         <div class="dash-car-left">
-                            <div class="dash-car-thumb"><img src="${car.image}"></div>
+                            <div class="dash-car-thumb"><img src="${car.image}" alt="${car.title}"></div>
                             <div class="dash-car-meta">
                                 <h5>${car.title}</h5>
                                 <p>${car.date}</p>
@@ -1158,7 +837,6 @@
         function generateCardHtml(car, index) {
             let featureBadge = car.featured ? `<span class="badge-span badge-featured">Featured</span>` : '';
             if (car.isNew) featureBadge = `<span class="badge-span badge-new">New</span>`;
-
             return `
                 <div class="car-card" style="animation-delay: ${index * 0.05}s;" onclick="viewVehicleDetail('${car.id}')">
                     <div class="car-image-container">
@@ -1184,19 +862,43 @@
             `;
         }
 
+        /* ── SEARCH / FILTER (browse page) ── */
+        function filterListings() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const condition = document.getElementById('filter-condition').value;
+            const maxPrice = parseInt(document.getElementById('filter-price').value) || Infinity;
+
+            const filtered = vehicleDatabase.filter(car => {
+                const matchesQuery = !query || car.title.toLowerCase().includes(query) || car.fuel.toLowerCase().includes(query);
+                const matchesCondition = !condition || car.condition === condition;
+                const matchesPrice = car.priceNum <= maxPrice;
+                return matchesQuery && matchesCondition && matchesPrice;
+            });
+
+            const container = document.getElementById('full-marketplace-gallery');
+            const noResults = document.getElementById('no-results-msg');
+            if (filtered.length === 0) {
+                container.innerHTML = '';
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+                container.innerHTML = filtered.map((c, i) => generateCardHtml(c, i)).join('');
+            }
+        }
+
+        /* ── VEHICLE DETAIL ── */
         function viewVehicleDetail(carId) {
             const car = vehicleDatabase.find(c => c.id === carId);
             if (!car) return;
 
-            const target = document.getElementById('dynamic-detail-target');
             let badgeText = car.featured ? `<span class="badge-span badge-featured" style="position:static;">Featured</span>` : '';
             if (car.isNew) badgeText = `<span class="badge-span badge-new" style="position:static;">New</span>`;
 
-            target.innerHTML = `
+            document.getElementById('dynamic-detail-target').innerHTML = `
                 <div class="detail-main-card">
                     <div class="detail-meta-row">
                         <span class="badge-span badge-condition" style="position:static; background:#64748b;">${car.condition}</span>
-                        <span class="badge-span badge-condition" style="position:static; background:#64748b;">Available</span>
+                        <span class="badge-span badge-condition" style="position:static; background:#16a34a;">Available</span>
                         ${badgeText}
                     </div>
                     <div class="detail-title-price-row">
@@ -1204,11 +906,9 @@
                         <div class="detail-price">${car.price}</div>
                     </div>
                     <div class="detail-location"><i class="fa-solid fa-location-dot"></i> ${car.location}</div>
-                    
                     <div class="detail-hero-image">
                         <img src="${car.image}" alt="${car.title}">
                     </div>
-                    
                     <div class="detail-specs-bar">
                         <div class="spec-bar-box">
                             <div class="spec-bar-label"><i class="fa-solid fa-gauge"></i> Mileage</div>
@@ -1227,13 +927,11 @@
                             <div class="spec-bar-value">${car.color || 'N/A'}</div>
                         </div>
                     </div>
-                    
                     <div class="detail-description">
                         <h4>Vehicle Overview</h4>
                         <p>${car.description}</p>
                     </div>
                 </div>
-                
                 <div class="detail-sidebar">
                     <div class="sidebar-widget">
                         <div class="widget-title">Contact Seller</div>
@@ -1241,59 +939,87 @@
                             <div class="seller-label">Private Seller</div>
                             <div class="seller-name">Verified User</div>
                         </div>
-                        <button class="btn-msg"><i class="fa-regular fa-comment"></i> Send Message</button>
+                        <button class="btn-msg" onclick="showToast('Message sent to seller!', 'success')"><i class="fa-regular fa-comment"></i> Send Message</button>
                     </div>
-                    
                     <div class="sidebar-widget">
                         <div class="widget-title">Need Services?</div>
                         <div class="service-promo-item" onclick="switchTab('insurance')">
                             <div class="service-promo-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                            <div class="service-promo-text">
-                                <h5>Get Insurance Quote</h5>
-                                <p>Compare top providers</p>
-                            </div>
+                            <div class="service-promo-text"><h5>Get Insurance Quote</h5><p>Compare top providers</p></div>
                         </div>
                         <div class="service-promo-item" onclick="switchTab('shipping')">
                             <div class="service-promo-icon"><i class="fa-solid fa-truck"></i></div>
-                            <div class="service-promo-text">
-                                <h5>Transport Vehicle</h5>
-                                <p>Safe shipping nationwide</p>
-                            </div>
+                            <div class="service-promo-text"><h5>Transport Vehicle</h5><p>Safe shipping nationwide</p></div>
                         </div>
                     </div>
                 </div>
             `;
-
             switchTab('vehicle-detail');
         }
 
+        /* ── TAB SWITCHER ── */
         function switchTab(targetTabId) {
-            const sections = document.querySelectorAll('.page-section');
-            sections.forEach(s => s.classList.remove('active'));
-
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(n => n.classList.remove('active'));
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
 
             const footer = document.getElementById('main-global-footer');
-            if (targetTabId === 'buyer-login' || targetTabId === 'seller-login') {
-                footer.style.display = 'none';
-            } else {
-                footer.style.display = 'block';
-            }
+            footer.style.display = (targetTabId === 'buyer-login' || targetTabId === 'seller-login') ? 'none' : 'block';
 
             const targetSection = document.getElementById(`page-${targetTabId}`);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
+            if (targetSection) targetSection.classList.add('active');
 
-            if (targetTabId === 'home' || targetTabId === 'browse-market' || targetTabId === 'vehicle-detail') {
-                document.getElementById('tab-home').classList.add('active');
-            } else {
-                const correspondingNav = document.getElementById(`tab-${targetTabId}`);
-                if (correspondingNav) correspondingNav.classList.add('active');
+            // Highlight correct nav item
+            const navMap = { 'home': 'tab-home', 'browse-market': 'tab-home', 'vehicle-detail': 'tab-home', 'insurance': 'tab-insurance', 'shipping': 'tab-shipping', 'dashboard': 'tab-dashboard' };
+            const navId = navMap[targetTabId];
+            if (navId) {
+                const navEl = document.getElementById(navId);
+                if (navEl) navEl.classList.add('active');
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ── FIX #2: Login validation & toast feedback ── */
+        function handleLogin(type) {
+            const email = document.getElementById(`${type}-email`).value.trim();
+            const password = document.getElementById(`${type}-password`).value;
+
+            if (!email || !validateEmail(email)) {
+                showToast('Please enter a valid email address.', 'error');
+                return;
+            }
+            if (!password || password.length < 6) {
+                showToast('Password must be at least 6 characters.', 'error');
+                return;
+            }
+            showToast(`Signed in as ${type}! Welcome back.`, 'success');
+            setTimeout(() => switchTab('home'), 1200);
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        /* ── TOAST ── */
+        let toastTimer;
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast-msg');
+            toast.textContent = message;
+            toast.className = `toast toast-${type}`;
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => { toast.classList.add('hidden'); }, 3000);
+        }
+
+        /* ── PASSWORD TOGGLE ── */
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            }
         }
     </script>
 </body>
